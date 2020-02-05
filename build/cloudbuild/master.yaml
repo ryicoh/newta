@@ -1,0 +1,38 @@
+steps:
+  - id: go-generate
+    name: 'gcr.io/cloud-builders/go'
+    args:
+      - generate
+      - ./...'
+
+  - id: go-build
+    name: 'gcr.io/cloud-builders/go'
+    env:
+      - GOOS=linux
+    args: 
+      - build
+      - ./cmd/newta
+    
+  - id: docker-build
+    name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - build
+      - -t=gcr.io/$PROJECT_ID/newta
+      - -f=./build/docker/newta/Dockerfile
+      - .
+
+  - id: docker-push
+    name: 'gcr.io/cloud-builders/docker'
+    args: 
+      - push
+      - gcr.io/$PROJECT_ID/newta
+
+  - id: deploy-cloud-run
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - run
+      - deploy
+      - newta
+      - --image=gcr.io/$PROJECT_ID/newta
+      - --platform=managed
+      - --allow-unauthenticated
