@@ -31,6 +31,7 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/newta
 
+<<<<<<< HEAD
   - id: deploy-cloud-run
     name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -41,3 +42,11 @@ steps:
       - --platform=managed
       - --allow-unauthenticated
       - --region=us-east1
+=======
+  - id: deploy-cloud-run-deploy
+    name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - builds
+      - submit
+
+>>>>>>> d8feaa89a8e2a01b45d4106ae0f435a63b7fef9b
