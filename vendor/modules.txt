@@ -1,0 +1,2 @@
+# gopkg.in/go-playground/webhooks.v5 v5.13.0
+gopkg.in/go-playground/webhooks.v5/github
