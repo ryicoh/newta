@@ -40,10 +40,4 @@ steps:
       - --image=gcr.io/$PROJECT_ID/newta
       - --platform=managed
       - --allow-unauthenticated
-
-  - id: deploy-cloud-run-submit
-    name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - builds
-      - submit
-
+      - --region=us-east1

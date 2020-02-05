@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"os"
 )
 
@@ -18,14 +17,8 @@ func New() (*Config, error) {
 	}
 
 	key := os.Getenv("GITHUB_WEBHOOK_SECRET_KEY")
-	if key == "" {
-		return nil, errors.New("GITHUB_WEBHOOK_SECRET_KEY is empty")
-	}
 
 	url := os.Getenv("SLACK_WEBHOOK_URL")
-	if url == "" {
-		return nil, errors.New("SLACK_WEBHOOK_URL is empty")
-	}
 
 	return &Config{Port: port, GithubWebhookSecretKey: key, SlackWebhookURL: url}, nil
 }
