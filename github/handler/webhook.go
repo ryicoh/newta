@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ryicoh/newta/pkg/github/usecase"
+	"github.com/ryicoh/newta/github/usecase"
 	"gopkg.in/go-playground/webhooks.v5/github"
 )
 

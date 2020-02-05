@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/ashwanthkumar/slack-go-webhook"
-	"github.com/ryicoh/newta/pkg/github/config"
+	"github.com/ryicoh/newta/github/config"
 )
 
 type Usecase struct {
