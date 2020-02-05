@@ -1,12 +1,14 @@
 steps:
   - id: go-generate
     name: 'gcr.io/cloud-builders/go'
+    dir: /root
     args:
       - generate
       - ./...'
 
   - id: go-build
     name: 'gcr.io/cloud-builders/go'
+    dir: /root
     env:
       - GOOS=linux
     args: 
@@ -36,3 +38,10 @@ steps:
       - --image=gcr.io/$PROJECT_ID/newta
       - --platform=managed
       - --allow-unauthenticated
+
+  - id: deploy-cloud-run-submit
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - builds
+      - submit
+
